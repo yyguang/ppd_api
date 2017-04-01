@@ -1,0 +1,21 @@
+#coding=utf-8
+__author__ = "yangl"
+'''''
+全局变量
+'''
+'''''
+publickey为服务端的公钥
+privatekey为自己客户端的私钥
+PS：python的密钥都是PKCS1的
+站点上的客户端私钥需要剔除
+-----BEGIN RSA PRIVATE KEY-----
+AND
+-----END RSA PRIVATE KEY-----
+并且将回车符剔除
+'''
+
+privatekey='''
+-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQCWvNFzxFkQJ+pmTnhI/H8Ah1gkJD07k3VDfsYI4TxcvfKa7IiLMu9ST4a2hbJGSXdsUeHFzmoGUezsiAbSWeY1LRt7zqg630goNZ2ahImHQY722RXo24oOeTaBMFfxHHncLRv49YrEFtxDCBtK2422SUcxHFLTVCECJcdb6M3IXwIDAQABAoGAQ6TkUZFRboCbHeIk9Ivq6m/STBW/LNcVjn57nEyHbA8JqiBvfhgTcdqiV5JT2Frrrr5oFP52cfOd4N+CQC97sLeUFCQmcPxHRNKOa1Hux73P1TVwi8ENzPHZETxmbfMoMdBVrrnLsmAn70DeUTO+mQEeDtMIGClVa1T2yWH4YNECQQD7wBXV8T53v3oRLJt3pdziUn84Ib7qzLpMPhlb65/06mOwVVkUFt+Vir2GMWlda0OyEZpvfah/8d/0XPyN2bwDAkEAmUg3S8A4Y8V2ihT9lb2ui4dMxiRBL1irc0SYdTdJODg5uSMt35YVHMvBbCN8m1TOMxSmswoq3l8/EkCWdzpJdQJAdNOuDmt2jsGX1xJ5Tyv0dj7MdPMMExBQwALtZ7/Pqit/eZwRy4XV2iLZUsXpXIXjk2Yh4e1RXZaUVGU2eml5mwJBAJem406G90N+8jDbY6jq6e4SBttisztstvRsQYp3EHIW7sVFEPXNP0YmMVAULAxic0AGhodM3+zyvywHytZbTKECQQCUmQm50/ChbpcEjQdt2aEA/PpkwER/hxkSxctMfqleQ8olPDLKkjZvuZFsdYA8Frmm0TGdk7/+BBPsEo7XG79g
+-----END RSA PRIVATE KEY-----
+'''

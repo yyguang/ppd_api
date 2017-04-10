@@ -1,5 +1,5 @@
 # coding=utf-8
-from __builtin__ import str
+# from __builtin__ import str
 
 __author__ = "yangl"
 

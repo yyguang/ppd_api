@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function showPushDiv(){
+                 var target=document.getElementById('pushDiv');
+                if(document.getElementById("isPush").checked){
+                    target.style.display="block";
+                }else{
+                    target.style.display="none";
+                }
+            }
+
+        </script>
+
+    </head>
+    <body>
+        <h1>用户投标界面</h1>
+        <br/>
+        <form action="/transform" method="post" enctype="multipart/form-data">
+            <label >期望收益率低于5%:</label>
+            <input type="text" value="0" name="mount1" />
+            <br/>
+            <label >期望收益率5%-10%:</label>
+            <input type="text" value="0" name="mount2" />
+            <br/>
+            <label >期望收益率10%-15%:</label>
+            <input type="text" value="0" name="mount3" />
+            <br/>
+            <label >期望收益率15%-20%:</label>
+            <input type="text" value="0" name="mount4" />
+            <br/>
+            <label >期望收益率高于20%:</label>
+            <input type="text" value="0" name="mount5" />
+            <br/>
+            <label >推送投标详情:</label>
+            <input type="checkbox" value="1" id="isPush" onclick="showPushDiv()" />
+            <br/>
+            <div id="pushDiv" style="display:none;">
+                <label >接收邮箱:</label>
+                <input type="text" value="" name="email" />
+                <br/>
+            </div>
+
+
+            
+            <input type="submit" />
+        </form>
+        <br/>
+
+        <h4>----------投标说明----------</h4>
+        <label>1.不同期望收益对应风险不同，分别为<5%:xx, 5%-10%:xx, ...</label>
+        <br/>
+        <label>2.期望收益与实际投标利率可能存在差别，但总是以最接近客户期望进行投标</label>
+        <br/>
+        <label>3.若半个小时未收到邮件，说明请求可能发生失败</label>
+    </body>
+</html>

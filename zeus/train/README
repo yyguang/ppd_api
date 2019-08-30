@@ -1,0 +1,19 @@
+retrain_full.py          多阶段训练的框架性源码
+retrian_full_porn.sh     色情模块的多阶段训练sh脚本，定义参数并开展实验
+retrain_full_violence.sh 暴恐模块的多阶段训练sh脚本，定义参数并开展实验
+sm_sequence.py           基于sequence（多线程/多进程）的数据生成器，包括数据加载，数据增强等代码
+shumei_callbacks.py      多GPU训练时的模型保存
+prepare_data.py          生成训练框架用的数据目录（训练/验证/测试）
+check_data.py            对数据集进行去重，检查损坏或不支持的文件
+notebook_util.py         多GPU自动管理和选择的工具
+keras_to_tensorflow.py   将keras训练得到的hdf5模型转为pb模型 
+
+TODO
+生成文件列表的示例sh代码
+find DIR_TO_GENERATE -name "*.jpg"|awk -F '/' '{print $0"\t"$(NF-1)}'
+
+现在训练支持两种模式：
+默认模式为prepare生成文件夹，list_mode模式为支持生成list，可以这样在prepare.py调用：
+python prepare_data.py --train_dataset /data/project/guohangchu/zeus/train/train_0625.txt --test_dataset test_0625.txt --list_mode 1
+调用后在tmp里面生成训练、验证、测试对应的list文件
+如果需要用list_mode，记得在对应的训练sh里面设置list_mode=1

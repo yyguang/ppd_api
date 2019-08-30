@@ -1,0 +1,82 @@
+GetAppList: 
+需求：风险app挖掘
+输入：一天的fp日志
+处理：按app包名进行统计，保存为分卷csv
+输出：每个app包名的总次数
+      app包名
+      app名称列表
+
+FilterAppList：
+需求：标注得到app包名和细分类型的对应关系
+输入：GetAppList的结果
+      app包名到app类型的对应文件
+      需要保留的类型列表
+处理：按app包名进行统计，保存为分卷csv
+输出：app包名
+      app名称列表
+      app类型
+
+AppFeaturesByImei:
+需求：以Imei为key进行分析app特征，特征需求来自方方
+输入：一天的fp日志
+      app包名到细分类型的csv
+处理：按Imei进行统计，保存为分卷csv
+      最近一次启动的相关信息需要根据fp日志中appname和t字段来分析，其他根据apps字段分析
+      app包名到细分类型的csv格式为：第1列为app包名，第2列为app的名称列表，第3列为小米商店初筛得到的类型，第4列为标注的细分类型
+输出：payday_app_set                  Set[String]    当前安装的payday类app的列表
+      payday_app_setcount             Int            当前安装的payday类app的个数
+      payday_app_last_ts_max          Long           最近一次安装payday类app的时间戳，到ms
+      payday_app_last_active_ts_max   Long           最近一次启动payday类app的时间戳，到ms
+      loan_app_set                    Set[String]    当前安装的非payday信贷类app的列表
+      loan_app_setcount               Int            当前安装的非payday信贷类app的个数
+      loan_app_last_ts_max            Long           最近一次安装非payday信贷类app的时间戳，到ms
+      loan_app_last_active_ts_max     Long           最近一次启动非payday信贷类app的时间戳，到ms
+
+      hook_app_set                    Set[String]    hook app列表
+      hook_app_setcount               Int            hook app总数
+      monkey_app_set                  Set[String]    模拟点击app列表
+      monkey_app_setcount             Int            模拟点击app总数
+      vpn_app_set                     Set[String]    vpn app列表
+      vpn_app_setcount                Int            vpn app总数
+      alter_app_set                   Set[String]    设备篡改app数量
+      alter_app_setcount              Int            数倍篡改app总数
+      alter_loc_app_set               Set[String]    位置篡改app列表
+      alter_loc_app_setcount          Int            位置篡改app总数
+      alter_apk_app_set               Set[String]    apk篡改app列表
+      alter_apk_app_setcount          Int            apk篡改app总数
+      remote_ctr_app_set              Set[String]    远程控制app列表
+      remote_ctr_app_setcount         Int            远程控制app总数
+      multi_boxing_app_set            Set[String]    多开app列表
+      multi_boxing_app_setcount       Int            多开app总数
+      user_app_rate_custom            Double         用户app所占比例
+      app_list_custom                 Set[String]    所有app列表
+      app_cnt_custom                  Int            所有app总数
+      collect_app_int_sec_rate_latest Double         当前次采集到的整秒安装的app所占比例（非聚合得到）
+      
+
+AggregateAppFeaturesByImei（未完成）:
+需求：对AppFeaturesByImei的分析结果进行聚合，得到聚合app特征
+输入：多个AppFeaturesByImei的结果
+处理：按Imei进行统计，保存为分卷csv
+输出：与AppFeaturesByImei相同
+
+MergePackage2Category:
+需求：app包名和细分类型的对应关系csv（FilterAppList输出的结果+人工标注），从已有的平台名到细分类型的对应关系csv（之前人工标注的结果）中导入能对得上的
+输入：app包名和细分类型的对应关系csv
+      平台名到细分类型的对应关系csv
+输处：合并后的app包名和细分类型的对应关系csv
+
+360app特征方案：
+背景：360那边每月跑一次咱们提供的spark程序计算特征，再通过api供咱们查询，咱们也按月为单位从360拉数据写hbase
+1. 从hbase中导出过去30d的所有imei作为要查询的imei列表（Scala）（采用路路的Spark SQL已经可以提取一天的imei列表，并转化为步骤2所需要的格式，对应目录为get_imei）
+2. 通过现有程序从360获取app特征（Python）（已有，对应目录为sekeeper）
+3. 将获取的特征写入hbase（Scala）（已完成，对应源码为Save360AppFeatures，直接读取步骤2的输出）
+
+360app特征为聚合特征，特征分为两类：
+1) 推荐：窗口时间为all（需要根据具体要推荐的app来跑数据，因此暂不写入画像）
+2）金融：窗口时间为30d，60d，all，回溯时间为最近六个月（以月为单位）
+
+Save360AppFeatures:
+需求：将download_app_features下载得到的聚合特征写入hbase
+输入：调用download_app_features脚本的输出结果
+      

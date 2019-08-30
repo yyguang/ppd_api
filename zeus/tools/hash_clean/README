@@ -1,0 +1,29 @@
+hash_clean.sh
+数据 hash 去重。先运行 hash_clean.sh 脚本，会在当前目录生成一个 <dataset_list>.sample.list 文件，
+然后在运行 prepare_data.py 时设置 --is_hash_clean 1 ，则其会读取 <dataset_list>.sample.list 文
+件，进行数据清洗。
+
+hash_clean.sh 参数介绍
+  DATASET_LIST_PATH：数据集列表文件路径。
+  SIM_FAMS_SAVE_PATH：相似类别的拷贝保存路径。设为空的话将不保存相似类别的拷贝。一般用于测试，在原数
+                      据量较大时需要注意保存路径的存储空间。
+  MODE：模式。对于 hash_clean.sh 设为 clean 模式，不建议改动。
+  HASH_TYPE：hash 类型，可选的有 phash 、 dhash
+  IS_LOAD_HASH_LIST：是否加载每个数据集的 hash_list 文件，如果有的话。
+  IS_SAVE_HASH_LIST：是否保存每个数据集的 hash_list 文件，会覆盖原文件。
+  HAMMING_DIST_THR：判定相似图片的汉明距离的阈值。
+
+
+hash_find.sh
+在数据集中找出与所给图片相似的图片。默认生成一个 <src_img_md5>.similar.imgs.list 。
+
+hash_find.sh 参数介绍
+  DATASET_LIST_PATH：数据集列表文件路径。
+  SRC_IMG_PATH：需要查找的图片路径
+  SIM_IMGS_SAVE_PATH：相似图片的拷贝保存路径。设为空的话将不保存相似图片的拷贝。一般用于测试，在原数
+                      据量较大时需要注意保存路径的存储空间。
+  MODE：模式。对于 hash_find.sh 设为 find 模式，不建议改动。
+  HASH_TYPE：hash 类型，可选的有 phash 、 dhash
+  IS_LOAD_HASH_LIST：是否加载每个数据集的 hash_list 文件，如果有的话。
+  IS_SAVE_HASH_LIST：是否保存每个数据集的 hash_list 文件，会覆盖原文件。
+  HAMMING_DIST_THR：判定相似图片的汉明距离的阈值。

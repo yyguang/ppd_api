@@ -1,0 +1,12 @@
+python image_paste.py --background_image_dir background_image_dir --paste_image_gt_file paste_image/train_boxes.list --save_dir paste_20181006 --total 500
+background_image_dir：背景图片目录list或者背景图片的一级目录
+paste_image/train_boxes.list：logo图片的train_boxes.list
+save_dir：生成图片保存的路径
+total：生成图片的数目
+1：支持在背景图片的所有位置随机粘贴logo
+2：支持一个背景图片粘贴任意个logo，每个logo支持重复任意次，logo之间不会重叠
+3：支持对logo图片进行任意半径的高斯模糊，任意透明度的改变，任意大小的等比例缩放
+4：支持限制logo和背景图片之间最小的相对面积
+5：支持logo和背景图片要粘贴部位的相似度比较，可以设定不同的距离来定义像素点是否相似，可以设定相似像素点占比大于某个阈值则判断为相似
+6：可以直接返回最后的groundtruth
+7：暂时不支持旋转

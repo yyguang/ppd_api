@@ -1,0 +1,7 @@
+download          下载日常数据
+download_test     下载客户的测试数据
+spark             采用spark从HDFS上下载数据
+pyspark           采用pyspark从HDFS上下载数据
+misclassify       对误分类数据进行分析和处理
+phash_list        批量添加phash名单
+daily_ann_task    例行任务生成

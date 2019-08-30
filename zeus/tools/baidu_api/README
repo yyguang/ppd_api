@@ -1,0 +1,34 @@
+baidu_api.py      获取百度的色情结果，单线程版本
+baidu_api_mt.py   获取百度的色情结果，多线程版本
+baidu_api_terr.py 获取百度的暴恐结果，单线程版本
+baidu_api_politics.py 获取百度的涉政结果，单线程版本
+baidu_api_publicface.py 获取百度的公众人物结果，单线程版本
+baidu_api.py 使用方法: python baidu_api.py file_path_list
+输出结果直接打印到屏幕，可以重定向到文件
+第一列为路径,第二列为预测结果，第三列为预测的正常分，第四列为预测的色情分，第五列为性感分，第六列为真实结果，用"\t"分割
+输入文件第一列为文件绝对路径，第二列为标签，用"\t"分割，标签只能为porn,normal,sexy
+示例:sample.list
+
+baidu_api_mt.py 使用用法:
+python baidu_api_mt.py file_path_list output_file_patult_from_baidu_api.py
+
+baidu_api_terr.py 使用用法：
+python baidu_api_terr.py image_list_path delimiter log_file_path
+delimiter:用于指定image_list_path分隔符号:0为"\t",1为空格分割
+log_fiel_path:用于保存接口调用的结果json格式
+输出结果直接打印到屏幕，可以重定向到文件
+第一列为路径,第二列为预测结果，中间为各label概率值，最后一列为真实结果，用"\t"分割
+输入文件第一列为文件绝对路径，第二列为标签，用"\t"分割，标签只能为zhengchang,baoluanchangjing,guoqiguohui,junzhuang,kongbuzuzhi,qiangzhidaoju,xuexingchangjing
+示例:sample.list
+
+python baidu_api_politics.py image_list_path delimiter log_file_path
+delimiter:用于指定image_list_path分隔符号:0为"\t",1为空格分割
+log_fiel_path:用于保存接口调用的结果json格式
+
+python baidu_api_publicface.py image_list_path result_file
+image_list_path:图片路径list文件，格式为'img_path"\t"ground_truth'
+result_file:结果输出文件
+
+采用以下命令获得最新的key：
+curl -i -k 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=2CmGrHtHmQoXjgi36lUICtL7&client_secret=RKbAYosrODxhpPwA7BzF4kvD1UkjzC8R';
+key保存在access_token中

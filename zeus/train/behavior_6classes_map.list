@@ -1,0 +1,6 @@
+cigar_and_box     smoke
+explicit_smoke    smoke
+implicit_smoke    smoke
+not_person_smoke  smoke
+other_smoke       smoke
+meaning           normal

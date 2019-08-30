@@ -1,0 +1,5 @@
+train        基于keras的训练框架，目前主要使用的训练框架
+train_tf     基于tensorflow的训练框架，已经基本不用
+tools        其他相关工具
+inference    模型预测相关代码
+prepare_env  准备环境相关代码

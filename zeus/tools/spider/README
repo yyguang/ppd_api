@@ -1,0 +1,6 @@
+只支持python3
+baidu_spider: python baidu_spider.py --keywords 猫 --start 1 --page 2 --save_dir ./cat
+
+taobao_spider:python taobao.py keywords_list save_dir page_num
+
+数据增强:python case_augumentation.py case_dir aug_output

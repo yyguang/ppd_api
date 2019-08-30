@@ -1,0 +1,7 @@
+yidun_evla.py 获取网易易盾结果
+yidun_eval.py 使用方法: python yidun_eval.py sample.list log
+参数说明：
+1、sample.list 文件列表
+2、log 保存原始日志的文件
+输出结果直接打印到屏幕，可以重定向到文件
+分类信息，100：色情，110：性感，200：广告，210：二维码，300：暴恐，400：违禁，500：涉政

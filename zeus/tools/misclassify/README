@@ -1,4 +1,0 @@
-misclassify_analysis.py  输入inference_output.txt，生成对应的误分类数据
-misclassify_upload.py    上传误分类数据进行重标注
-misclassify_correct.py   将下载回来的误分类数据修正到本地数据库中，下载回的数据需要md5重命名
-reannotation_upload.py   标准修改较大时，需要重标注原有数据（或一部分）时，采用该脚本进行重标注数据上传

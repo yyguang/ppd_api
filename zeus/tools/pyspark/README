@@ -1,3 +1,0 @@
-nohup sh submit_img.sh 20180817 test_20180817 RaI8hPdp9MjVY5OsMCqH &
-三个参数:date hdfs_output organization_ID
-该脚本目前只支持色情的日志捞回，如果需要捞取其它数据或新字段，则要修改catch_img_case.py

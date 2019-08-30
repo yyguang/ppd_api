@@ -1,4 +1,0 @@
-月度评测工具
-catch_diff.py
-说明：检索各家结果diff,任意两家结果不同则认为需要review.
-usage: python catch_diff_images.py --shumei_result inference_output_shumei.txt --tupu_result inference_output_tupu.txt --baidu_result inference_output_baidu.txt --ali_result inference_output_ali.txt --is_output 1

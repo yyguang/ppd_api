@@ -1,1 +1,0 @@
-python phash_util.py --img_dir test --organization sqHKgNhqnB7RK43uVu43 --accessKey g9j7QWyS52QYSX9yaQpY --list_id bd797f2b101fa811514443f5a64be8f5 --saved_list ./test.list --sleep 2

@@ -1,2 +1,0 @@
-export PYSPARK_PYTHON="/usr/bin/python"
-/mnt/cloudera/parcels/CDH/bin/pyspark --conf spark.port.maxRetries=2000 --conf spark.blockManager.port=1923  --packages com.databricks:spark-csv_2.10:1.4.0 --master yarn --queue=feature --num-executors 32 --executor-memory 1G $1 $2 $3
